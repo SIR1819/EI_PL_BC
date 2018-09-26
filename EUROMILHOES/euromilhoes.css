@@ -1,0 +1,8 @@
+body {
+        background-color: aquamarine;
+        color:red;
+        }
+
+li {font-weight: bold}
+ul.numeros {color:navy}
+ul.estrelas {color:gold}
