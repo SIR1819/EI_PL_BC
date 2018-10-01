@@ -24,6 +24,10 @@ class KeyGenerator {
             sort($bag);
             return $bag;
         }
+
+       public function asJSON() {
+           return json_encode($this);
+       }
 }
 
 
