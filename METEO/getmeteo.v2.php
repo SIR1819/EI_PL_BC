@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET["local"])) {
-    $local = urlencode($_GET["local"]);
+    $localurl = urlencode($_GET["local"]);
+    $local = $_GET["local"];
 } else {
     $local = NULL;
 }
