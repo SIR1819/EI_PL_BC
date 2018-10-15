@@ -1,7 +1,7 @@
 41.545449
 -8.426507
 
-https://api.darksky.net/forecast/[key]/[latitude],[longitude]&units=SI
+https://api.darksky.net/forecast/[key]/[latitude],[longitude]&units=si
 
 https://api.darksky.net/forecast/814e5b27d87937feb926c8b0178f77c3/41.545449,-8.426507&units=si
 

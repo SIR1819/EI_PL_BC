@@ -6,3 +6,28 @@ body {
 li {font-weight: bold}
 ul.numeros {color:navy}
 ul.estrelas {color:gold}
+
+ul {display: inline-block;}
+
+li {
+        display: table-cell;
+        width: 50px;
+        height : 50px;
+        font-size: 30px;
+        font-weight: bold;
+        border-style: solid;
+        border-width: 2px;
+        border-color: black;
+        border-radius: 26px;
+        text-align: center;
+        vertical-align: middle;
+}
+
+ul.estrelas li {
+        background-color: yellow;
+        color: red;
+}
+ul.numeros li {
+        background-color: bisque;
+        color: blueviolet;
+}

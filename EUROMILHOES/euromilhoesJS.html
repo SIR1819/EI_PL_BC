@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>Euromilhões</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="euromilhoes.css"/>
+    </head>
+    <body>
+        <h1>Euromilhões</h1>
+        <!-- botao -->
+        <div>
+            <button id="bgera">Gera Chave</button>
+        </div>
+<!--
+        <div>
+            <ul class="numeros">
+                <li>2</li>
+                <li>12</li>
+                <li>17</li>
+                <li>34</li>
+                <li>43</li>
+            </ul>
+            <ul class="estrelas">
+                <li>3</li>
+                <li>11</li>
+            </ul>
+        </div>
+    -->
+        <!-- comentário -->
+        <p class="estrelas">&copy; &lt; EI-IPVC 2018 &gt;</p>
+    </body>
+    <script>
+        var bg = document.getElementById("bgera");
+        //bg.onclick = function() { console.log("olá");}
+        //bg.addEventListener("click", function() { console.log("olá");});
+        //bg.addEventListener("click", function() { console.log("olé");});
+        //bg.addEventListener("click", dizolo);
+        bg.addEventListener("click", geraChave);
+
+        function dizolo(e) {
+            console.log("oló");
+            console.log(this);
+            console.log(e.target);
+            console.log(e.currentTarget);
+        }
+
+        function geraChave() {
+            var chave = {
+                "estrelas" : [],
+                "numeros" : []
+            };
+
+        chave.estrelas = extrator(1,12,2);
+        chave.numeros = extrator(1,50,5);
+
+        console.log(chave);
+            function extrator(min,max,num) {
+                var extracao = [];
+                    while(extracao.length < num) {
+                        bola = min + Math.floor(Math.random()*(max-min+1));
+                        if (!extracao.includes(bola)) {
+                            extracao.push(bola);
+                        }
+                    }
+                extracao.sort(function (a,b) {return (a-b);});
+                return extracao;
+            }
+
+        myDIV = document.createElement("div");
+        myULnumeros = document.createElement("ul");
+        myULestrelas = document.createElement("ul");
+        myULestrelas.className = "estrelas";
+        myULnumeros.className = "numeros";
+
+        fazLista(myULestrelas,chave.estrelas);
+        fazLista(myULnumeros,chave.numeros);
+
+        myDIV.appendChild(myULnumeros);
+        myDIV.appendChild(myULestrelas);
+        document.body.appendChild(myDIV);
+
+        function fazLista(lista,arr) {
+            for(let i=0; i < arr.length ; i++) {
+                var LI = document.createElement("li");
+                LI.innerHTML = arr[i];
+                lista.appendChild(LI);
+            }
+        }
+
+
+
+            
+        }
+
+
+/*
+        function carro(rodas) {
+            this.cor = "vermelho";
+            this.rodas = rodas;
+        }
+
+        meucarro = new carro(3);
+
+        console.log(meucarro);
+*/
+
+
+    </script>
+</html>
