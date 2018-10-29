@@ -9,7 +9,7 @@ class KeyGenerator {
 
     // metodos
         public function __construct() {
-            $this->estrelas = $this->populate(1,12,2);
+            $this->estrelas = $this->populate(1,12,3);
             $this->numeros = $this->populate(1,50,5);
         }
 

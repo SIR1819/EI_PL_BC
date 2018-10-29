@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <title>Euromilhões</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="euromilhoes.css"/>
+    </head>
+    <body>
+        <h1>Euromilhões</h1>
+        <!-- botao -->
+        <div>
+            <button id="bgera">Gera Chave</button>
+            <button id="bobter">Obter Chave</button>
+            <button id="blimpa">Limpa Chave</button>
+        </div>
+        <div id="content">
+<!--
+        <div>
+            <ul class="numeros">
+                <li>2</li>
+                <li>12</li>
+                <li>17</li>
+                <li>34</li>
+                <li>43</li>
+            </ul>
+            <ul class="estrelas">
+                <li>3</li>
+                <li>11</li>
+            </ul>
+        </div>
+    -->
+    </div>
+        <!-- comentário -->
+        <p class="estrelas">&copy; &lt; EI-IPVC 2018 &gt;</p>
+    </body>
+    <script>
+        var bg = document.getElementById("bgera");
+        //bg.onclick = function() { console.log("olá");}
+        //bg.addEventListener("click", function() { console.log("olá");});
+        //bg.addEventListener("click", function() { console.log("olé");});
+        //bg.addEventListener("click", dizolo);
+        bg.addEventListener("click", geraChave);
+
+        var bl = document.getElementById("blimpa");
+        bl.addEventListener("click",limpaChave);
+
+        var bo = document.getElementById("bobter");
+        bo.addEventListener("click",obterChave);
+
+        function dizolo(e) {
+            console.log("oló");
+            console.log(this);
+            console.log(e.target);
+            console.log(e.currentTarget);
+        }
+
+
+        function obterChave() {
+            // instanciar um objecto
+            aReq = new XMLHttpRequest();
+            
+            aReq.onprogress = function (evento) {
+                console.log(evento.loaded, "from", evento.total );
+            }
+
+            aReq.onreadystatechange = function () {
+                console.log(this.readyState, this.status);
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("resposta : ",this.responseText);
+                    chave =  JSON.parse(this.responseText);
+                    console.log("chave : ",chave);
+                    afixaChave(chave);
+                }
+            }
+            
+            aReq.open("GET","http://localhost/SIR1819/EI_PL_BC/EUROMILHOES/KeyService.php");
+            //aReq.open("GET","http://localhost/SIR1819/EI_PL_BC/EUROMILHOES/PI10M.txt");
+            aReq.send();
+        }
+
+        function limpaChave() {
+            divContent = document.getElementById("content");
+            divContent.innerHTML="";
+        }
+
+
+        function afixaChave(chave) {
+            myDIV = document.createElement("div");
+            myULnumeros = document.createElement("ul");
+            myULestrelas = document.createElement("ul");
+            myULestrelas.className = "estrelas";
+            myULnumeros.className = "numeros";
+
+            fazLista(myULestrelas,chave.estrelas);
+            fazLista(myULnumeros,chave.numeros);
+
+            myDIV.appendChild(myULnumeros);
+            myDIV.appendChild(myULestrelas);
+
+            divContent = document.getElementById("content");
+            divContent.appendChild(myDIV);
+            
+            //document.body.appendChild(myDIV);
+
+
+            function fazLista(lista,arr) {
+                for(let i=0; i < arr.length ; i++) {
+                    var LI = document.createElement("li");
+                    LI.innerHTML = arr[i];
+                    lista.appendChild(LI);
+                }
+            }
+        }
+
+
+        function geraChave() {
+            var chave = {
+                "estrelas" : [],
+                "numeros" : []
+            };
+
+            chave.estrelas = extrator(1,12,2);
+            chave.numeros = extrator(1,50,5);
+
+            console.log(chave);
+
+            afixaChave(chave);
+            
+            function extrator(min,max,num) {
+                var extracao = [];
+                    while(extracao.length < num) {
+                        bola = min + Math.floor(Math.random()*(max-min+1));
+                        if (!extracao.includes(bola)) {
+                            extracao.push(bola);
+                        }
+                    }
+                extracao.sort(function (a,b) {return (a-b);});
+                return extracao;
+            }
+
+        
+
+
+            
+        }
+
+
+/*
+        function carro(rodas) {
+            this.cor = "vermelho";
+            this.rodas = rodas;
+        }
+
+        meucarro = new carro(3);
+
+        console.log(meucarro);
+*/
+
+
+    </script>
+</html>
