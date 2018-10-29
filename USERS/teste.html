@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hover Effect Style</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="users.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+    </head>
+    <body>
+        <div id="target">
+        <!------------------ Hover Effect Style : Demo - 1 --------------->
+        <div class="container">
+            <h3 class="text-center">Hover Effect Style : Demo - 1</h3>
+            <div class="row mt-40">
+                <div class="col-md-4 col-sm-6">
+                    <div class="box1">
+                        <img src="http://bestjquery.com/tutorial/hover-effect/demo206/images/img-1.jpg" alt="">
+                        <h3 class="title">Williamson</h3>
+                        <ul class="icon">
+                            <li><a href="#"><i class="fa fa-search"></i></a></li>
+                            <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    
+        <script type="x-tmpl-mustache" id="t">
+            {{#users}}
+                <div class="container">
+                        <h3 class="text-center">Hover Effect Style : Demo - 1</h3>
+                        <div class="row mt-40">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="box1">
+                                    <img src="{{imagem}}" alt="">
+                                    <h3 class="title">{{nome}}</h3>
+                                    <ul class="icon">
+                                        <li><a href="#"><i class="fa fa-search"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/users}}
+        </script>
+
+        <script>
+var dados = {
+    "nome" :  "pedro",
+    "apelido" : "moreira"
+}
+
+
+var dados = {
+    "users" : [{
+            "nome" :  "pedro",
+            "apelido" : "moreira",
+            "imagem" : "https://randomuser.me/api/portraits/men/17.jpg"
+            },
+            {
+            "nome" :  "teresa",
+            "apelido" : "madureira",
+            "imagem" : "https://randomuser.me/api/portraits/women/17.jpg"
+            },
+            {
+            "nome" :  "joão",
+            "apelido" : "silva",
+            "imagem" : "https://randomuser.me/api/portraits/men/18.jpg"
+            }]
+};
+
+
+var usertemplateElem = document.getElementById("t");
+var usertemplate = usertemplateElem.innerHTML;
+console.log(usertemplate);
+var renderedtemplate =  Mustache.render(usertemplate, dados);
+console.log(renderedtemplate);
+var target = document.getElementById("target");
+target.innerHTML = renderedtemplate;
+</script>
+    </body>
+</html>

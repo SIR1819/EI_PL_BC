@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js">
+    </script>
+</head>
+<body>
+
+    <div id="target"></div>
+    
+<script id="usertemplate" type="x-tmpl-mustache">
+    {{#users}}
+    <h1> Viva o meu nome é {{nome}} {{apelido}} </h1>
+    {{/users}}
+</script>
+
+<script>
+var dados = {
+    "nome" :  "pedro",
+    "apelido" : "moreira"
+}
+
+
+var dados = {
+    "users" : [{
+            "nome" :  "pedro",
+            "apelido" : "moreira"
+            },
+            {
+            "nome" :  "teresa",
+            "apelido" : "madureira"
+            },
+            {
+            "nome" :  "joão",
+            "apelido" : "silva"
+            }]
+};
+
+
+var usertemplateElem = document.getElementById("usertemplate");
+var usertemplate = usertemplateElem.innerHTML;
+console.log(usertemplate);
+var renderedtemplate =  Mustache.render(usertemplate, dados);
+console.log(renderedtemplate);
+var target = document.getElementById("target");
+target.innerHTML = renderedtemplate;
+
+
+</script>
+
+</body>
+</html>

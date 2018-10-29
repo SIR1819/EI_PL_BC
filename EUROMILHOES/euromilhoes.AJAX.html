@@ -9,7 +9,8 @@
         <!-- botao -->
         <div>
             <button id="bgera">Gera Chave</button>
-            <button id="bobter">Obter Chave</button>
+            <button id="bobterX">Obter Chave XMLHTTTPRequest </button>
+            <button id="bobterF">Obter Chave Fetch </button>
             <button id="blimpa">Limpa Chave</button>
         </div>
         <div id="content">
@@ -43,8 +44,11 @@
         var bl = document.getElementById("blimpa");
         bl.addEventListener("click",limpaChave);
 
-        var bo = document.getElementById("bobter");
-        bo.addEventListener("click",obterChave);
+        var boX = document.getElementById("bobterX");
+        boX.addEventListener("click",obterChaveX);
+
+        var boF = document.getElementById("bobterF");
+        boF.addEventListener("click",obterChaveF);
 
         function dizolo(e) {
             console.log("oló");
@@ -53,8 +57,18 @@
             console.log(e.currentTarget);
         }
 
+        function obterChaveF() {
+            fetch("http://localhost/SIR1819/EI_PL_BC/EUROMILHOES/KeyService.php")
+             .then(function (resposta) {
+                 return resposta.json();
+             })
+             .then(function (chave) {
+                 console.log(chave);
+                 afixaChave(chave);
+             });
+        }
 
-        function obterChave() {
+        function obterChaveX() {
             // instanciar um objecto
             aReq = new XMLHttpRequest();
             
@@ -101,7 +115,6 @@
             
             //document.body.appendChild(myDIV);
 
-
             function fazLista(lista,arr) {
                 for(let i=0; i < arr.length ; i++) {
                     var LI = document.createElement("li");
@@ -110,7 +123,6 @@
                 }
             }
         }
-
 
         function geraChave() {
             var chave = {
@@ -136,10 +148,6 @@
                 extracao.sort(function (a,b) {return (a-b);});
                 return extracao;
             }
-
-        
-
-
             
         }
 
