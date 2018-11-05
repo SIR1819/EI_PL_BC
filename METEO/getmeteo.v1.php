@@ -2,13 +2,11 @@
 //https://api.darksky.net/forecast/814e5b27d87937feb926c8b0178f77c3/41.545449,-8.426507&units=si
 $local = "Braga";
 
-
 $urlbase = "https://api.darksky.net/forecast/";
 $apikey = "814e5b27d87937feb926c8b0178f77c3";
 $lat = "41.545449";
 $lon = "-8.426507";
 $params = "units=si";
-
 
 $url = $urlbase.$apikey."/".$lat.",".$lon."?".$params;
 

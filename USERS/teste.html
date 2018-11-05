@@ -32,26 +32,36 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     
         <script type="x-tmpl-mustache" id="t">
-            {{#users}}
                 <div class="container">
                         <h3 class="text-center">Hover Effect Style : Demo - 1</h3>
                         <div class="row mt-40">
-                            <div class="col-md-4 col-sm-6">
+                            {{#results}}
+                            <div class="col-md-2 col-sm-3">
                                 <div class="box1">
-                                    <img src="{{imagem}}" alt="">
-                                    <h3 class="title">{{nome}}</h3>
+                                    <img src="{{picture.large}}" alt="">
+                                    <h3 class="title">{{name.first}}</h3>
                                     <ul class="icon">
                                         <li><a href="#"><i class="fa fa-search"></i></a></li>
                                         <li><a href="#"><i class="fa fa-link"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
+                            {{/results}}
                         </div>
                     </div>
-                {{/users}}
         </script>
 
         <script>
+
+            fetch("https://randomuser.me/api/?results=100")
+            .then(function(resp) {
+                return resp.json();
+            })
+            .then(function(data) {
+                console.log(data);
+                makeit(data);
+            })
+            
 var dados = {
     "nome" :  "pedro",
     "apelido" : "moreira"
@@ -76,14 +86,17 @@ var dados = {
             }]
 };
 
-
-var usertemplateElem = document.getElementById("t");
-var usertemplate = usertemplateElem.innerHTML;
-console.log(usertemplate);
-var renderedtemplate =  Mustache.render(usertemplate, dados);
-console.log(renderedtemplate);
+function makeit(dados) {
+    var usertemplateElem = document.getElementById("t");
+    var usertemplate = usertemplateElem.innerHTML;
+    console.log(usertemplate);
+    var renderedtemplate =  Mustache.render(usertemplate, dados);
+    console.log("---",renderedtemplate);
 var target = document.getElementById("target");
 target.innerHTML = renderedtemplate;
+
+}
+
 </script>
     </body>
 </html>
