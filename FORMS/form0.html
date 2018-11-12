@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    
+    <form action="dump.php" method="POST">
+
+        <fieldset>
+            <legend>dados bio</legend>
+        <input type="text" name="nome" id="inome" required="required"/>
+        <input type="number" name="idade" id="iidade"/>
+        <input type="date" name"dn" id="idn"/>
+        <br/>
+        <input required ="required" type="radio" id="igm" name="genero" value="m"> <label for="igm">Masculino</label>
+        <br/>
+        <input type="radio" id="igf" name="genero" value="f"> <label for="igf">Feminino</label>
+        <br/>
+        <input type="radio" id="igx" name="genero" value="x"> <label for="igx">Outro</label>
+        <select name="nacionalidade">
+            <optgroup label="Europa">
+            <option value="PT">Portugal</option>
+            <option value="ES">Espanha</option>
+            </optgroup>
+            <optgroup label="Resto do Mundo">
+                <option value="TV">Tuvalu</option>
+            </optgroup>
+        </select>
+
+        </fieldset>
+        <fieldset>
+            <legend>preferências alimentares</legend>
+            <input type="checkbox" checked="checked" name="comida[]" value="123"> carne <br/>
+            <input type="checkbox" name="comida[]" value="124"> peixe <br/>
+            <input type="checkbox" name="comida[]" value="125"> vegan <br/>
+            <label><input type="checkbox" name="comida[]" value="126"> sushi </label><br/>
+        </fieldset>
+    
+        <fieldset>
+            <legend>submissão</legend>
+        <input type="submit" value="Enviar"/>
+        <input type="reset" value="Limpar"/>
+        </fieldset>
+
+    </form>
+</body>
+</html>
