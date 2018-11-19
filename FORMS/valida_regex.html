@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="dump.php" method="get">
+        <input type="text" name="username"
+        pattern="[a-zA-Z]{4,10}">
+
+        <input type="text" name="cp"
+        pattern="[0-9]{4}-[0-9]{3}"
+        title = "XXXX-YYY">
+
+        <input required="required" type="text" name="cp"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{4,10}"
+        title="4 a 10 com 1 minuscula, 1 maiuscula, 1 simbolo e 1 digito">
+        <input type="submit">
+
+    </form>
+</body>
+</html>
