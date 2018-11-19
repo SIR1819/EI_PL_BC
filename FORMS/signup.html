@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="dump.php" method="get" id="f1">
+        <input type="text" name="username" id="iusername">
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+<script>
+    var formok = true;
+
+    $("#f1").submit(function () {
+        if (!formok) {
+            return false;
+        } else {
+            return true;
+        }
+    })
+
+    $("#iusername").keyup(function () {
+        console.log($("#username").val());
+        $.ajax({
+            url : "checkuser.php",
+            method : "GET",
+            dataType : "json",
+            data : {"username":$("#iusername").val()},
+            success : function (data) {
+                if (data.status === true) {
+                    $("#iusername").css("background-color","lime");
+                    formok = true;
+                } else {
+                    $("#iusername").css("background-color","pink");
+                    formok = false;
+                }
+            }
+        });
+    });
+
+
+</script>
+</html>
