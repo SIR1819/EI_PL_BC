@@ -8,14 +8,30 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="dump.php" method="get" id="f1">
+    <form action="dump.php" method="get" id="f1" onsubmit="return valida();">
         <input type="text" name="username" id="iusername">
         <input type="submit" value="Enviar">
     </form>
 </body>
 <script>
     var formok = true;
+/*
+    f1 = document.getElementById("f1");
+    f1.addEventListener("submit", valida);
+    
+    f1 = document.getElementById("f1");
+    f1.onsubmit = valida;
+*/
+    
 
+   function valida () {
+        if (!formok) {
+            return false;
+        } else {
+            return true;
+        }
+   }
+/*
     $("#f1").submit(function () {
         if (!formok) {
             return false;
@@ -24,6 +40,7 @@
         }
     })
 
+*/
     $("#iusername").keyup(function () {
         console.log($("#username").val());
         $.ajax({

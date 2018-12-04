@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            color: magenta
+        }
+
+        p {
+            color: red
+        }
+
+        div {
+            color: blue
+        }
+
+        .container p {
+            color: green
+        }
+
+        p[onclick] {
+            color: navy
+        }
+
+        div>p {
+            color: pink
+        }
+
+        div~p {
+            color: olive
+        }
+
+        .content+p {
+            color: lime
+        }
+
+        div div p:nth-child(2n+1) {
+            color: black
+        }
+
+        #d001 p {
+            color: silver
+        }
+
+        div:nth-child(2n+2) {
+            color: maroon
+        }
+
+        .content {
+            color: yellow
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <p>Texto00</p>
+        <div>
+            <p onclick="do();">Texto01</p>
+            <p class="content">Texto02</p>
+            <p>Texto03</p>
+            <div class="content">
+                Texto04
+                <p>Texto05</p>
+                <p>Texto06</p>
+                <p>Texto07</p>
+            </div>
+            <p>Texto08</p>
+            <div id="d001">
+                <p>Texto09</p>
+            </div>
+            <p>Texto10</p>
+        </div>
+        Texto11
+    </body>
+</body>
+
+</html>
